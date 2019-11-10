@@ -18,7 +18,7 @@ git clone https://github.com/ravi-ashara/ekda.git
 <img src="src/assets/screenshots/Menu.png" width="213"/>&nbsp;
 <img src="src/assets/screenshots/Donor.png" width="213"/>&nbsp;
 <img src="src/assets/screenshots/Advertisement.png" width="213"/>&nbsp;
-<img src="src/assets/screenshots/News.png" width="213"/>&nbsp;
+<img src="src/assets/screenshots/News.png" width="210"/>
 <img src="src/assets/screenshots/Feedback.png" width="213"/>
 
 ## Start A Local Dev Server
