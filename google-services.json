@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "690486240690",
+    "firebase_url": "https://ekda-14285.firebaseio.com",
+    "project_id": "ekda-14285",
+    "storage_bucket": "ekda-14285.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690486240690:android:7a5392179040dd767fb0ab",
+        "android_client_info": {
+          "package_name": "com.ekda.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690486240690-t7hu2la7adh81vddobue43fhrk82k8k0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3KBBajaIJMka5jfE2K1kC0ol4bXVGNko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690486240690-t7hu2la7adh81vddobue43fhrk82k8k0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

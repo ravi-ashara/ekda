@@ -1,0 +1,268 @@
+<ion-header mode="ios">
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+    <ion-card class="ImageCard ion-no-margin">
+        <ion-row>
+            <ion-col class="ion-text-center" size="12">
+                <img class="propicImg" [src]="_DomSanitizer.bypassSecurityTrustUrl(userImage)" />
+            </ion-col>
+            <ion-col class="ion-text-center" size="12">
+                <ion-text color="light" (click)="showactionSheet()"> Change Profile Photo</ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card padding class="contentCard">
+        <form [formGroup]="profileForm">
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Contact number
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_no" disabled="true"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Home number
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_home"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Office number
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_office"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Other number
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_other"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">First Name
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input name="first_name" formControlName="first_name"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.first_name.valid
+                        &&(profileForm.controls.first_name.dirty
+                        ||profileForm.controls.first_name.touched)">
+                        <div *ngIf="profileForm.controls['first_name'].errors['required']">
+                            <ion-text color="danger">First Name is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Middle Name
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input name="middle_name" formControlName="middle_name"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.middle_name.valid
+                        &&(profileForm.controls.middle_name.dirty
+                        ||profileForm.controls.middle_name.touched)">
+                        <div *ngIf="profileForm.controls['middle_name'].errors['required']">
+                            <ion-text color="danger">Middle Name is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Last Name
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input name="sur_name" formControlName="sur_name"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.sur_name.valid
+                        &&(profileForm.controls.sur_name.dirty
+                        ||profileForm.controls.sur_name.touched)">
+                        <div *ngIf="profileForm.controls['sur_name'].errors['required']">
+                            <ion-text color="danger">Last Name is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label>Gender
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender" formControlName="gender" mode="ios">
+                            <ion-select-option value="female">Female</ion-select-option>
+                            <ion-select-option value="male">Male</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.gender.valid
+                        &&(profileForm.controls.gender.dirty
+                        ||profileForm.controls.gender.touched)">
+                        <div *ngIf="profileForm.controls['gender'].errors['required']">
+                            <ion-text color="danger">Gender is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label>marital Status
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-select placeholder="Marital Status" okText="Select" cancelText="Dismiss" name="mstatus" formControlName="marital_status" mode="ios">
+                            <ion-select-option value="single">Single</ion-select-option>
+                            <ion-select-option value="merried">Merried</ion-select-option>
+                            <ion-select-option value="divorce">Divorce</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.marital_status.valid
+                        &&(profileForm.controls.marital_status.dirty
+                        ||profileForm.controls.marital_status.touched)">
+                        <div *ngIf="profileForm.controls['marital_status'].errors['required']">
+                            <ion-text color="danger">Maritial Status is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label>DOB
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="MMMM/DD/YYYY" placeholder="Select
+                            Date" name="dob" formControlName="dob"></ion-datetime>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.dob.valid
+                        &&(profileForm.controls.dob.dirty
+                        ||profileForm.controls.dob.touched)">
+                        <div *ngIf="profileForm.controls['dob'].errors['required']">
+                            <ion-text color="danger">DOB is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Email
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input type="email" name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.email.valid
+                        &&(profileForm.controls.email.dirty
+                        ||profileForm.controls.email.touched)">
+                        <div *ngIf="profileForm.controls['email'].errors['required']">
+                            <ion-text color="danger">Email is required.</ion-text>
+                        </div>
+                        <div *ngIf="profileForm.controls['email'].errors['email']">
+                            <ion-text color="danger">Enter proper email.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Education
+                        </ion-label>
+                        <ion-input type="text" name="email" formControlName="education"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Occupation
+                        </ion-label>
+                        <ion-input type="text" name="ocupation" formControlName="occupation"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Address
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-textarea name="address" formControlName="address"></ion-textarea>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.address.valid
+                        &&(profileForm.controls.address.dirty
+                        ||profileForm.controls.address.touched)">
+                        <div *ngIf="profileForm.controls['address'].errors['required']">
+                            <ion-text color="danger">Address is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">City
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input type="text" name="city" formControlName="city"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.city.valid
+                        &&(profileForm.controls.city.dirty
+                        ||profileForm.controls.city.touched)">
+                        <div *ngIf="profileForm.controls['city'].errors['required']">
+                            <ion-text color="danger">City is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Country
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input type="text" name="country" formControlName="country"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.country.valid
+                        &&(profileForm.controls.country.dirty
+                        ||profileForm.controls.country.touched)">
+                        <div *ngIf="profileForm.controls['country'].errors['required']">
+                            <ion-text color="danger">country is required.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">PinCode
+                            <ion-text color="danger"> * </ion-text>
+                        </ion-label>
+                        <ion-input type="number" name="pin_code" formControlName="pin_code"></ion-input>
+                    </ion-item>
+                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.pin_code.valid
+                        &&(profileForm.controls.pin_code.dirty
+                        ||profileForm.controls.pin_code.touched)">
+                        <div *ngIf="profileForm.controls['pin_code'].errors['required']">
+                            <ion-text color="danger">PinCode is required.</ion-text>
+                        </div>
+                        <div *ngIf="profileForm.controls['pin_code'].errors['pattern']">
+                            <ion-text color="danger">Enter Proper number.</ion-text>
+                        </div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="10" offset="1">
+                    <ion-button shape="round" expand="block" type="submit" [disabled]="!profileForm.valid" (click)="profileFormSubmit(profileForm)">
+                        <ion-ripple-effect></ion-ripple-effect>
+                        Update Profile
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-card>
+</ion-content>

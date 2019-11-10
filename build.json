@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+             "keystore":"my-release-key.keystore",
+             "storePassword":"27Ekda@Admin",
+             "alias":"27ekda",
+             "password":"27Ekda@Admin",
+             "keystoreType":""
+         }
+     }
+ }

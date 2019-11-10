@@ -1,0 +1,74 @@
+<ion-header mode="ios">
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Contact Listing</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill=clear (click)="filterPage()">
+                <ion-icon name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="greyBg">
+    <ion-row *ngIf="filterData">
+        <ion-col size="12">
+            <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender" mode="ios" [(ngModel)]="filterSelectedData.gender">
+                    <ion-select-option value="F">Female</ion-select-option>
+                    <ion-select-option value="M">Male</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-col>
+        <ion-col size="6">
+            <ion-item>
+                <ion-label position="floating">Pincode</ion-label>
+                <ion-input type="number" name="pincode" [(ngModel)]="filterSelectedData.pincode"></ion-input>
+            </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+            <ion-item>
+                <ion-label position="floating">City</ion-label>
+                <ion-input type="text" [(ngModel)]="filterSelectedData.city"></ion-input>
+            </ion-item>
+        </ion-col>
+
+        <ion-col size="12" class="ion-text-center">
+            <ion-button shape="round" (click)="filterUserList()">Filter Users</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-item>
+        <ion-input [(ngModel)]="searchKey" type="text" id="search" placeholder="Search By Name" (keyup.enter)="searchProduct(searchKey)">
+        </ion-input>
+    </ion-item>
+    <ion-list *ngIf="userData?.length != 0; else nodataFound">
+        <div *ngFor="let list of userData | filter: 'full_name':searchKey">
+            <ion-card *ngIf="list?.first_name != null && list?.sur_name != null">
+                <ion-item lines=none (click)="profile(list)">
+                    <ion-avatar slot="start">
+                        <img [src]="list?.image == null ? '../../../assets/img/user.png' : list?.image" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2 class="fc-blue">{{list?.full_name}}</h2>
+                        <p><strong>{{list?.phone}}</strong></p>
+                        <h3 class="fc-black">{{list?.address}}</h3>
+                        <p class="fc-black">{{list?.city}} {{list?.state}} , {{list?.country}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-card>
+        </div>
+    </ion-list>
+    <ng-template #nodataFound>
+        <ion-list>
+            <ion-card class="ion-text-center">
+                <ion-item lines="none">
+                    No users found
+                </ion-item>
+            </ion-card>
+        </ion-list>
+    </ng-template>
+</ion-content>

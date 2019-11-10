@@ -1,0 +1,55 @@
+<ion-header mode="ios">
+    <ion-toolbar mode="ios">
+        <ion-buttons>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Verify OTP</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="OTP">
+    <div class="ion-text-center ion-margin-top">
+        <img src="../../../../assets/icon/logo.png" alt="Logo" width="150" height=150 />
+    </div>
+    <ion-row style="margin-top:10%">
+        <ion-col size="12" sizeMd="6" offsetMd="3" sizeLg="6" offsetLg="3" sizeXl="4" offsetXl="4">
+            <ion-card class="ion-text-center ion-padding">
+                <ion-col size="12" class="showContent ion-text-center">
+                    <ion-text color="light">Please enter OTP code.</ion-text>
+                </ion-col>
+                <ion-col class="otpInput ion-text-center" size="12">
+                    <ion-input #otp1 type="number" required pattern="[0-9]{4}" maxlength="1" size="1" (keyup)="otpController($event,
+                        otp2, '')">
+                    </ion-input>
+                    <input type="hidden" name="otpHidden" [value]="otp1?.value" />
+                    <ion-input #otp2 type="number" required pattern="[0-9]{4}" maxlength="1" size="1" (keyup)="otpController($event,
+                        otp3, otp1)">
+                    </ion-input>
+                    <input type="hidden" name="otpHidden" [value]="otp2?.value" />
+                    <ion-input #otp3 type="number" required pattern="[0-9]{4}" maxlength="1" size="1" (keyup)="otpController($event,
+                        otp4, otp2)">
+                    </ion-input>
+                    <input type="hidden" name="otpHidden" [value]="otp3?.value" />
+                    <ion-input #otp4 type="number" required pattern="[0-9]{4}" maxlength="1" size="1" (keyup)="otpController($event,
+                        '', otp3)">
+                    </ion-input>
+                    <input type="hidden" name="otpHidden" [value]="otp4?.value" />
+                </ion-col>
+
+                <div class="ion-text-center ion-margin-top">
+                    <ion-button color="light" type="submit" class="btn" (click)="otpFormSubmit()" [disabled]="!otp1.value || !otp2.value || !otp3.value || !otp4.value">
+                        <ion-text color="primary">Submit</ion-text>
+                    </ion-button>
+                </div>
+                <div class="ion-text-center ion-margin-top">
+                    <h6>
+                        <ion-text color="light">Not received your OTP code?</ion-text>
+                    </h6>
+                    <ion-button type="button" fill="clear" (click)="resendCode()" color="success">
+                        <ion-text color="light">Resend OTP</ion-text>
+                    </ion-button>
+                </div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

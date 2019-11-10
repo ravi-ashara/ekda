@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar mode=ios>
+        <ion-buttons slot="start">
+            <ion-back-button color="light" text="" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title mode=ios>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+    <ion-card class="ImageCard ion-no-margin">
+        <ion-row>
+            <ion-col class="ion-text-center" size="12">
+                <img class="propicImg" [src]="userImage == null ? '../../../assets/img/user.png' : userImage" />
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <div style="margin-top: -50px;">
+        <ion-card class="contentCard ion-padding" *ngIf="userData">
+            <ion-label>
+                <h1 class="fc-blue">Contact</h1>
+            </ion-label>
+            <ion-label>
+                <h2 class="font-black">
+                    {{userData?.first_name}} {{userData?.middle_name}} {{userData?.sur_name}}
+                </h2>
+                <h2>
+                    {{userData?.phone}}
+                </h2>
+                <h2>
+                    {{userData?.email}}
+                </h2>
+            </ion-label>
+        </ion-card>
+
+        <ion-card padding *ngIf="userData">
+            <ion-label>
+                <h1 class="fc-blue">Address</h1>
+            </ion-label>
+            <ion-label>
+                <h2 class="font-black">
+                    {{userData?.address}},
+                </h2>
+                <h2>
+                    {{userData?.city}},
+                </h2>
+                <h2>
+                    {{userData?.country}}
+                </h2>
+                <h3>
+                    {{userData?.pin_code}}
+                </h3>
+            </ion-label>
+        </ion-card>
+
+        <ion-card class="radiusBottom ion-padding" *ngIf="userData">
+            <ion-label>
+                <h1 class="fc-blue">About</h1>
+            </ion-label>
+            <ion-label>
+                <h2 class="font-black">
+                    {{userData?.full_name}}
+                </h2>
+                <h2>
+                    DOB: {{userData?.dob}}
+                </h2>
+            </ion-label>
+        </ion-card>
+    </div>
+</ion-content>

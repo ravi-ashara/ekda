@@ -1,0 +1,7 @@
+{
+  "name": "Ekda",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

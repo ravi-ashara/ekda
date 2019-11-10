@@ -1,0 +1,30 @@
+<ion-content class="ion-padding login">
+    <div class="ion-text-center ion-margin-top">
+        <img src="../../../../assets/icon/logo.png" alt="Logo" width="150" height=150 />
+    </div>
+    <div class="form">
+        <form [formGroup]="loginForm" (ngSubmit)="loginformSubmit()">
+            <ion-item class="ion-no-padding inputPhone" line="none">
+                <ion-label position="floating" color="light">
+                    <ion-text color="light">Enter Phone No</ion-text>
+                    <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input type="number" name="phone" formControlName="phone"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top ion-margin-left" *ngIf="!loginForm.controls.phone.valid &&(loginForm.controls.phone.dirty ||loginForm.controls.phone.touched)">
+                <div *ngIf="loginForm.controls['phone'].errors['required']">
+                    <ion-text color="light">Phone Number is required.</ion-text>
+                </div>
+                <div *ngIf="loginForm.controls['phone'].errors['pattern']">
+                    <ion-text color="light">Enter Proper number.</ion-text>
+                </div>
+            </div>
+            <div class="ion-text-center ion-padding">
+                <ion-button type="submit" class="btn" expand="block" [disabled]="!loginForm.valid" color="light">
+                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-text color="primary">Login</ion-text>
+                </ion-button>
+            </div>
+        </form>
+    </div>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>News List</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let list of newsData" (click)="openNewsDetail(list)">
+        <ion-card-header class="line-wrap-title">
+            <ion-card-title>{{list?.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="line-wrap-desc" [innerHTML]="list.description"></ion-card-content>
+    </ion-card>
+</ion-content>
