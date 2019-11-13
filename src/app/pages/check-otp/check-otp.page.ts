@@ -76,11 +76,11 @@ export class CheckOtpPage {
           }, error => {
             self.bs.DismissLoader();
             console.log(error);
-            self.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+            self.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
           });
         } else {
           self.bs.DismissLoader();
-          self.alert.openAlert('Ekda', 'Please enter valid OTP', 'OK').then(() => {
+          self.alert.openAlert('27 Ekda', 'Please enter valid OTP', 'OK').then(() => {
             self.otpArr = [];
           });
         }
@@ -111,19 +111,19 @@ export class CheckOtpPage {
         this.bs.DismissLoader();
         if (receivedData.status) {
           this.otp = receivedData.data.otp;
-          this.alert.openAlert('Ekda', receivedData.msg, 'OK');
+          this.alert.openAlert('27 Ekda', receivedData.msg, 'OK');
         } else {
-          this.alert.openAlert('Ekda', 'Opps something wrong..', 'OK');
+          this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
         }
       }, error => {
         this.bs.DismissLoader();
         console.log(error);
-        this.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+        this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
       });
     } catch (error) {
       this.bs.DismissLoader();
       console.log(error);
-      this.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+      this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
     }
   }
 }

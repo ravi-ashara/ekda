@@ -29,7 +29,7 @@ export class DonorsPage {
         }
       },error => {
         this.bs.DismissLoader();
-        this.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+        this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
       });
     } catch (error) {
       console.log(error);

@@ -4,7 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AlertModule } from './Module/alert/alert.module';
-// import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
+import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { BasicService } from './service/Basic/basic.service';
 import { Storage } from '@ionic/storage';
 
@@ -55,7 +55,7 @@ export class AppComponent {
     public router: Router,
     public alertModule: AlertModule,
     public navCtrl: NavController,
-    // private push: Push,
+    private push: Push,
     public bs: BasicService,
     public storage: Storage,
     public event: Events
@@ -80,7 +80,7 @@ export class AppComponent {
       });
       this.bs.getUserData();
       this.handleHardwareBackButton();
-      // this.pushNotifictions();
+      this.pushNotifictions();
       this.setUserData();
     });
   }
@@ -127,49 +127,50 @@ export class AppComponent {
       this.userData = data;
     });
   }
-  // pushNotifictions() {
-  //   const options: PushOptions = {
-  //     android: {
-  //       senderID: '690486240690'
-  //     },
-  //     browser: {},
-  //     ios: {
-  //       sound: true,
-  //       badge: true
-  //     },
-  //     windows: {},
 
-  //   };
+  pushNotifictions() {
+    const options: PushOptions = {
+      android: {
+        senderID: '690486240690'
+      },
+      browser: {},
+      ios: {
+        sound: true,
+        badge: true
+      },
+      windows: {},
 
-  //   const pushObject: PushObject = this.push.init(options);
+    };
 
-  //   pushObject.on('registration').subscribe((data: any) => {
+    const pushObject: PushObject = this.push.init(options);
 
-  //     console.log('Device registered' + data);
-  //     console.log('Device registrationId ' + data.registrationId);
+    pushObject.on('registration').subscribe((data: any) => {
 
-  //     this.bs.deviceToken = data.registrationId;
-  //   });
+      console.log('Device registered' + data);
+      console.log('Device registrationId ' + data.registrationId);
 
-  //   pushObject.on('notification').subscribe((data: any) => {
-  //     console.log('Received a notification ' + JSON.stringify(data));
-  //     var extraData = JSON.parse(JSON.stringify(data.additionalData));
-  //     if (data.additionalData.foreground) {
-  //       // if application open
-  //       console.log('in foreground');
+      this.bs.deviceToken = data.registrationId;
+    });
 
-  //     } else {
-  //       // In background
-  //       // setTimeout(() => {
-  //       //   this.navCtrl.navigateForward('');
-  //       // }, 2000);
-  //     }
-  //   });
+    pushObject.on('notification').subscribe((data: any) => {
+      console.log('Received a notification ' + JSON.stringify(data));
+      var extraData = JSON.parse(JSON.stringify(data.additionalData));
+      if (data.additionalData.foreground) {
+        // if application open
+        console.log('in foreground');
+
+      } else {
+        // In background
+        // setTimeout(() => {
+        //   this.navCtrl.navigateForward('');
+        // }, 2000);
+      }
+    });
 
 
-  //   pushObject.on('error').subscribe(error => {
-  //     console.error('Error with Push plugin' + JSON.stringify(error));
-  //   });
+    pushObject.on('error').subscribe(error => {
+      console.error('Error with Push plugin' + JSON.stringify(error));
+    });
 
-  // }
+  }
 }

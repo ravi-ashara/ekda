@@ -28,18 +28,18 @@ export class AdvertisementPage {
       this.bs.hitApi('post', 'user/advertisement', data).subscribe((response: any) => {
         this.bs.DismissLoader();
         if (response.status) {
-          this.alert.openAlert('Ekda', response.msg, 'OK').then(() => {
+          this.alert.openAlert('27 Ekda', response.msg, 'OK').then(() => {
             this.navCtrl.navigateRoot(['/my-calendar']);
           });
         } else {
-          this.alert.openAlert('Ekda', 'Opps something wrong..', 'OK');
+          this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
         }
       }, error => {
-        this.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+        this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
         this.bs.DismissLoader();
       });
     } catch (error) {
-      this.alert.openAlert('Ekda', 'Error from server side..', 'OK');
+      this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
       this.bs.DismissLoader();
     }
   }

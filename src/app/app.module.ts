@@ -13,7 +13,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { Push } from '@ionic-native/push/ngx';
+import { Push } from '@ionic-native/push/ngx';
 
 /** Modules */
 import { AlertModule } from './Module/alert/alert.module';
@@ -50,7 +50,7 @@ import { PipesModule } from './pipes/pipes.module';
     Crop,
     // Contacts,
     Base64,
-    // Push,
+    Push,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
