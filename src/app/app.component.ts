@@ -143,12 +143,7 @@ export class AppComponent {
     };
 
     const pushObject: PushObject = this.push.init(options);
-
     pushObject.on('registration').subscribe((data: any) => {
-
-      console.log('Device registered' + data);
-      console.log('Device registrationId ' + data.registrationId);
-
       this.bs.deviceToken = data.registrationId;
     });
 
@@ -160,10 +155,6 @@ export class AppComponent {
         console.log('in foreground');
 
       } else {
-        // In background
-        // setTimeout(() => {
-        //   this.navCtrl.navigateForward('');
-        // }, 2000);
       }
     });
 

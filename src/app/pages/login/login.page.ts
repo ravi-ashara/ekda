@@ -50,6 +50,9 @@ export class LoginPage {
             this.navCtrl.navigateRoot(['/my-calendar']);
           }
         }
+      }, error => {
+        console.log(error);
+        this.bs.DismissLoader();
       });
     } catch (error) {
       console.log(error);
