@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import * as $ from 'jquery';
-import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +41,7 @@ export class BasicService {
     public loadingCtrl: LoadingController,
     public toastController: ToastController,
     public storage: Storage,
-    public platform: Platform,
-    public httpPlugin: HTTP,
-  ) {
+    public platform: Platform) {
 
   }
 
@@ -55,18 +52,6 @@ export class BasicService {
       return this.http.post(this.baseUrl + api, params, { headers: { Auth: this.token } });
     } else if (method == 'delete') {
       return this.http.delete(this.baseUrl + api, { headers: { Auth: this.token } });
-    }
-  }
-
-  hitAPINative(method: string, api: string, params: {}) {
-    let headers = {
-      'Content-Type': 'application/json',
-      Auth: this.token
-    };
-    if (method == 'get') {
-      return this.httpPlugin.get(this.baseUrl + api, {}, headers);
-    } else if (method == 'post') {
-      return this.httpPlugin.post(this.baseUrl + api, params, headers);
     }
   }
 

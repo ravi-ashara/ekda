@@ -36,22 +36,21 @@ export class LoginPage {
         phone_no: this.loginForm.value.phone
       };
       this.bs.showLoader();
-      this.bs.hitAPINative('post', 'register', data).then((receivedData: any) => {
+      this.bs.hitApi('post', 'register', data).subscribe((receivedData: any) => {
         this.bs.DismissLoader();
-        let allData = JSON.parse(receivedData.data);
-        if (allData.status) {
+        if (receivedData.status) {
           const navigationExtras: NavigationExtras = {
             state: {
-              user: allData.data
+              user: receivedData.data
             }
           };
           this.router.navigate(['/check-otp'], navigationExtras);
         } else {
-          if (allData.data.is_user_exist) {
+          if (receivedData.data.is_user_exist) {
             this.navCtrl.navigateRoot(['/my-calendar']);
           }
         }
-      }).catch(error => {
+      }, error => {
         console.log(error);
         this.bs.DismissLoader();
       });
