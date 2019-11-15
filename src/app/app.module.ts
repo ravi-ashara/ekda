@@ -9,11 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-// import { Contacts } from '@ionic-native/contacts/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Push } from '@ionic-native/push/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
 
 /** Modules */
 import { AlertModule } from './Module/alert/alert.module';
@@ -48,9 +48,9 @@ import { PipesModule } from './pipes/pipes.module';
     SplashScreen,
     Camera,
     Crop,
-    // Contacts,
     Base64,
     Push,
+    HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
