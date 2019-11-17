@@ -7,20 +7,22 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-item class="textbox-style">
+<ion-content class="ion-padding">
+    <ion-item class="textbox-style ion-no-padding">
         <ion-label class="font-black">{{name}}</ion-label>
     </ion-item>
-    <ion-item class="textbox-style">
+    <ion-item class="textbox-style ion-no-padding">
         <ion-label class="font-black">{{mobileNo}}</ion-label>
     </ion-item>
-    <ion-item class="textbox-style">
+    <ion-item class="textbox-style ion-no-padding">
         <ion-textarea [(ngModel)]="feedback" class="font-white" rows="6" placeholder="Type your feedback here...">
         </ion-textarea>
     </ion-item>
 
     <div class="ion-margin-top ion-text-center">
-        <ion-button expand=block (click)="submit()">Submit</ion-button>
+        <ion-button (click)="submit()">Submit</ion-button>
+    </div>
+    <div class="ion-margin-top ion-text-center">
         <img src='../../../assets/img/comLogo.png' width="100" height="100" />
     </div>
 

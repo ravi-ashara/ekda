@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content class="greyBg">
-    <ion-row *ngIf="filterData">
+    <ion-row *ngIf="filterData" class="ion-padding">
         <ion-col size="12">
             <ion-item>
                 <ion-label>Gender</ion-label>
@@ -53,7 +53,9 @@
                         <img [src]="list?.image == null ? '../../../assets/img/user.png' : list?.image" />
                     </ion-avatar>
                     <ion-label>
-                        <h2 class="fc-blue">{{list?.full_name}}</h2>
+                        <h2>
+                            <ion-text color="primary">{{list?.full_name}}</ion-text>
+                        </h2>
                         <p><strong>{{list?.phone}}</strong></p>
                         <h3 class="fc-black">{{list?.address}}</h3>
                         <p class="fc-black">{{list?.city}} {{list?.state}} , {{list?.country}}</p>

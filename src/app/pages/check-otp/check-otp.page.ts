@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import * as $ from 'jquery';
-import { NavController } from '@ionic/angular';
+import { NavController, Events } from '@ionic/angular';
 import { AlertModule } from '../../Module/alert/alert.module';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { BasicService } from 'src/app/service/Basic/basic.service';
@@ -20,7 +20,8 @@ export class CheckOtpPage {
     public navCtrl: NavController,
     public alert: AlertModule,
     public bs: BasicService,
-    public zone: NgZone
+    public zone: NgZone,
+    public event: Events
   ) {
     this.activated.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state.user) {
@@ -57,6 +58,7 @@ export class CheckOtpPage {
               this.bs.token = receivedData.data.access_token;
               this.bs.userId = receivedData.data.user_id;
               self.bs.setUserData(receivedData.data);
+              this.event.publish('setUserData');
               if (self.userExist == true) {
                 if (receivedData.data.first_name === null && receivedData.data.sur_name === null) {
                   self.navCtrl.navigateRoot(['/profile']);

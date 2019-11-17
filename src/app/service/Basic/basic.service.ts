@@ -9,7 +9,7 @@ import * as $ from 'jquery';
 })
 export class BasicService {
 
-  baseUrl: any = 'http://phoenixtechinfo.com/ekda/api/';
+  baseUrl: any = 'https://www.avronhospitals.com/ekda/api/';
   token: any = '27ekda_auth';
   loadingElement: any;
   deviceToken: any = '';

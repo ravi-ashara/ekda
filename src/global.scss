@@ -9,7 +9,6 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
 ion-toolbar {
     --color: white;
     --background: rgba(0, 114, 255, 1);
@@ -19,6 +18,10 @@ ion-toolbar {
     --background: -o-linear-gradient(left, rgba(0, 114, 255, 1) 0%, rgba(0, 114, 255, 1) 9%, rgba(0, 166, 255, 1) 51%, rgba(0, 197, 255, 1) 95%, rgba(0, 197, 255, 1) 100%);
     --background: -ms-linear-gradient(left, rgba(0, 114, 255, 1) 0%, rgba(0, 114, 255, 1) 9%, rgba(0, 166, 255, 1) 65%, rgba(0, 197, 255, 1) 95%, rgba(0, 197, 255, 1) 100%);
     --background: linear-gradient(to right, rgba(0, 114, 255, 1) 0%, rgba(0, 114, 255, 1) 9%, rgba(0, 166, 255, 1) 65%, rgba(0, 197, 255, 1) 95%, rgba(0, 197, 255, 1) 100%);
+}
+
+.header-ios ion-toolbar:last-child {
+    --border-width: 0;
 }
 
 ion-toolbar.sc-ion-back-button-ios-h:not(.ion-color):not(.ion-color),
