@@ -80,7 +80,7 @@ export class AppComponent {
       });
       this.bs.getUserData();
       this.handleHardwareBackButton();
-      this.pushNotifictions();
+      this.pushNotifications();
       this.setUserData();
     });
   }
@@ -112,7 +112,7 @@ export class AppComponent {
     });
   }
 
-  pushNotifictions() {
+  pushNotifications() {
     const options: PushOptions = {
       android: {
         senderID: '690486240690'
