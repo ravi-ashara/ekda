@@ -89,22 +89,6 @@ export class AppComponent {
     this.platform.backButton.subscribe((event: any) => {
       if (this.router.url === '/login') {
         navigator['app'].exitApp();
-      } else if (
-        this.router.url !== '/register' &&
-        this.router.url !== '/check-otp' &&
-        this.router.url !== '/forgot-password' &&
-        this.router.url !== '/change-password'
-      ) {
-        this.alertModule.openConfirm(
-          'Exit App',
-          'Are you sure exit App',
-          'Exit',
-          (returnValue: any) => {
-            if (returnValue === 'Success') {
-              navigator['app'].exitApp();
-            }
-          }
-        );
       }
     });
   }
@@ -118,7 +102,7 @@ export class AppComponent {
       localStorage.removeItem('phoneNo');
       localStorage.removeItem('userID');
       this.storage.remove('userData');
-      this.bs.token = '27ekda_auth';
+      localStorage.removeItem('token');
     });
   }
 

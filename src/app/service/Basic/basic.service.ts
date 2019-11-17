@@ -10,7 +10,6 @@ import * as $ from 'jquery';
 export class BasicService {
 
   baseUrl: any = 'https://www.avronhospitals.com/ekda/api/';
-  token: any = '27ekda_auth';
   loadingElement: any;
   deviceToken: any = '';
   deviceType: any = '';
@@ -47,11 +46,11 @@ export class BasicService {
 
   hitApi(method: string, api: string, params: {}) {
     if (method == 'get') {
-      return this.http.get(this.baseUrl + api, { headers: { Auth: this.token } });
+      return this.http.get(this.baseUrl + api, { headers: { Auth: localStorage.token == undefined ? '27ekda_auth' : localStorage.token } });
     } else if (method == 'post') {
-      return this.http.post(this.baseUrl + api, params, { headers: { Auth: this.token } });
+      return this.http.post(this.baseUrl + api, params, { headers: { Auth: localStorage.token == undefined ? '27ekda_auth' : localStorage.token } });
     } else if (method == 'delete') {
-      return this.http.delete(this.baseUrl + api, { headers: { Auth: this.token } });
+      return this.http.delete(this.baseUrl + api, { headers: { Auth: localStorage.token == undefined ? '27ekda_auth' : localStorage.token } });
     }
   }
 
@@ -99,6 +98,7 @@ export class BasicService {
   }
 
   setUserData(data) {
+    localStorage.token = data.access_token;
     this.storage.set('userData', data);
     this.mobileNo = data.phone_no;
     this.firstName = data.first_name;
@@ -107,7 +107,6 @@ export class BasicService {
     this.email = data.email;
     this.address = data.address;
     this.dob = data.dob;
-    this.token = data.access_token;
     this.city = data.city;
     this.state = data.state;
     this.county = data.county;
@@ -133,7 +132,6 @@ export class BasicService {
         this.email = data.email;
         this.address = data.address;
         this.dob = data.dob;
-        this.token = data.access_token;
         this.city = data.city;
         this.state = data.state;
         this.county = data.county;

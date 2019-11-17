@@ -55,7 +55,7 @@ export class CheckOtpPage {
           self.bs.hitApi('post', 'check-otp', data).subscribe((receivedData: any) => {
             self.bs.DismissLoader();
             if (receivedData.status) {
-              this.bs.token = receivedData.data.access_token;
+              localStorage.token = receivedData.data.access_token;
               this.bs.userId = receivedData.data.user_id;
               self.bs.setUserData(receivedData.data);
               this.event.publish('setUserData');
