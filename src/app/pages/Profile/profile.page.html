@@ -11,14 +11,14 @@
     <ion-card class="ImageCard ion-no-margin">
         <ion-row>
             <ion-col class="ion-text-center" size="12">
-                <img class="propicImg" [src]="_DomSanitizer.bypassSecurityTrustUrl(userImage)" />
+                <img class="propicImg" [src]="userImage" />
             </ion-col>
             <ion-col class="ion-text-center" size="12">
                 <ion-text color="light" (click)="showactionSheet()"> Change Profile Photo</ion-text>
             </ion-col>
         </ion-row>
     </ion-card>
-    <ion-card padding class="contentCard">
+    <ion-card class="contentCard ion-padding">
         <form [formGroup]="profileForm">
             <ion-row>
                 <ion-col size="12">

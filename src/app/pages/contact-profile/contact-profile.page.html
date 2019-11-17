@@ -20,6 +20,20 @@
             <ion-label>
                 <h1 class="fc-blue">Contact</h1>
             </ion-label>
+            <ion-label>
+                <h2>
+                    {{userData?.phone}} (Personal)
+                </h2>
+                <h2 *ngIf="userData?.phone_home">
+                    {{userData?.phone_home}} (Home)
+                </h2>
+                <h2 *ngIf="userData?.phone_office">
+                    {{userData?.phone_office}} (Office)
+                </h2>
+                <h2 *ngIf="userData?.phone_other">
+                    {{userData?.phone_other}} (Other)
+                </h2>
+            </ion-label>
         </ion-card>
 
         <ion-card padding *ngIf="userData">

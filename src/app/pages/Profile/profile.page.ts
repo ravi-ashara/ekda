@@ -58,7 +58,6 @@ export class ProfilePage {
       phone_other: ['', Validators.required],
     });
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       if (params.cno) {
         this.profileForm.patchValue(params.cno);
       } else {
@@ -69,11 +68,6 @@ export class ProfilePage {
       }
     });
   }
-
-  ionViewWillEnter() {
-    
-  }
-
 
   showactionSheet() {
     this.actionSheetController
@@ -102,7 +96,9 @@ export class ProfilePage {
           {
             text: 'Cancel',
             role: 'cancel',
-            handler: () => { }
+            handler: () => {
+
+            }
           }
         ]
       })
@@ -160,6 +156,7 @@ export class ProfilePage {
     this.base64.encodeFile(val).then(
       (base64File: string) => {
         this.userImage = base64File;
+        this.profileFormSubmit(this.profileForm);
       },
       err => {
         console.log(err);
@@ -169,11 +166,9 @@ export class ProfilePage {
 
   profileFormSubmit(val: any) {
     this.bs.showLoader();
-    val.value.profileId = this.userImage;
-    // tslint:disable-next-line: radix
+    val.value.profile_pic = this.userImage;
     val.value.phone_no = Number(val.value.phone_no);
     if (val.value) {
-      // this.alert.showToast('Your profile update successfully.', 'top', 5000);
       const uservalue = val.value;
       const userId = {
         user_id: this.bs.userId
@@ -181,14 +176,17 @@ export class ProfilePage {
       const data = Object.assign(uservalue, userId);
       this.bs.hitApi('post', 'user/update-profile', data).subscribe((receivedData: any) => {
         this.bs.setUserData(receivedData.data);
+        this.userImage = receivedData.data.profile_pic
+        this.bs.DismissLoader();
         this.alert.showToast('Your profile update successfully.', 'top', 2000);
         this.navCtrl.navigateRoot(['/my-calendar']);
-        this.event.publish('setUserData')
+        this.event.publish('setUserData');
       }, error => {
         this.bs.DismissLoader();
         console.log(error);
       });
     } else {
+      this.bs.DismissLoader();
       this.alert.showToast('Please enter proper value.', 'top', 2000);
     }
   }
