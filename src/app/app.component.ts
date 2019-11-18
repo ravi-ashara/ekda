@@ -97,7 +97,7 @@ export class AppComponent {
           if (res === "Success") {
             navigator['app'].exitApp();
           }
-        })
+        });
       }
     });
   }
