@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform, NavController, Events } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController, Events, IonRouterOutlet } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
   public version: any = '';
   public userData: any;
   public appPages = [
@@ -87,8 +88,16 @@ export class AppComponent {
 
   handleHardwareBackButton() {
     this.platform.backButton.subscribe((event: any) => {
-      if (this.router.url === '/login') {
+      if (this.routerOutlet && this.routerOutlet.canGoBack()) {
+        this.routerOutlet.pop();
+      } else if (this.router.url === '/login') {
         navigator['app'].exitApp();
+      } else {
+        this.alertModule.openConfirm('27 Ekda', 'Are you sure you want to exit ?', 'Exit', (res: any) => {
+          if (res === "Success") {
+            navigator['app'].exitApp();
+          }
+        })
       }
     });
   }
