@@ -1,14 +1,6 @@
 .line-wrap-desc {
-    display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 65px;
-}
-
-.line-wrap-title {
-    white-space: nowrap;
-    height: 60px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    height: 63px;
 }

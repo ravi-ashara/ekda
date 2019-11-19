@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, NavController, Events, IonRouterOutlet } from '@ionic/angular';
+import { Platform, NavController, Events, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { AlertModule } from './Module/alert/alert.module';
 import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { BasicService } from './service/Basic/basic.service';
 import { Storage } from '@ionic/storage';
+import { FiltersPage } from './pages/filters/filters.page';
 
 @Component({
   selector: 'app-root',
@@ -59,7 +60,8 @@ export class AppComponent {
     private push: Push,
     public bs: BasicService,
     public storage: Storage,
-    public event: Events
+    public event: Events,
+    public modalController: ModalController
   ) {
     this.initializeApp();
     this.event.unsubscribe('setUserData');
@@ -84,6 +86,17 @@ export class AppComponent {
       this.pushNotifications();
       this.setUserData();
     });
+  }
+
+  openImage(val: any) {
+    this.modalController.create({
+      component: FiltersPage,
+      componentProps: {
+        image: val == null ? '../../assets/img/user.png' : val
+      }
+    }).then((modal: any) => {
+      modal.present();
+    })
   }
 
   handleHardwareBackButton() {

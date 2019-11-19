@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import * as $ from 'jquery';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -106,7 +107,7 @@ export class BasicService {
     this.lastName = data.sur_name;
     this.email = data.email;
     this.address = data.address;
-    this.dob = data.dob;
+    this.dob = moment(data.dob);
     this.city = data.city;
     this.state = data.state;
     this.county = data.county;
@@ -130,7 +131,7 @@ export class BasicService {
         this.lastName = data.sur_name;
         this.email = data.email;
         this.address = data.address;
-        this.dob = data.dob;
+        this.dob = moment(data.dob);
         this.city = data.city;
         this.state = data.state;
         this.county = data.county;

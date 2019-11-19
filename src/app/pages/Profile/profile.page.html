@@ -11,7 +11,7 @@
     <ion-card class="ImageCard ion-no-margin">
         <ion-row>
             <ion-col class="ion-text-center" size="12">
-                <img class="propicImg" [src]="userImage" />
+                <img class="propicImg" [src]="userImage" (click)="openImage(userImage)" />
             </ion-col>
             <ion-col class="ion-text-center" size="12">
                 <ion-text color="light" (click)="showactionSheet()"> Change Profile Photo</ion-text>
@@ -23,31 +23,10 @@
             <ion-row>
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Contact Number
+                        <ion-label position="floating" class="label-fontsize">Contact No.
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
                         <ion-input type="number" name="cno" formControlName="phone_no" disabled="true"></ion-input>
-                    </ion-item>
-                </ion-col>
-                <ion-col size="12">
-                    <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Home Number
-                        </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_home"></ion-input>
-                    </ion-item>
-                </ion-col>
-                <ion-col size="12">
-                    <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Office Number
-                        </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_office"></ion-input>
-                    </ion-item>
-                </ion-col>
-                <ion-col size="12">
-                    <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Other Number
-                        </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_other"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -98,12 +77,14 @@
                         </div>
                     </div>
                 </ion-col>
+
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
                         <ion-label class="label-fontsize-custom">Gender
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender" formControlName="gender" mode="ios">
+                        <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender"
+                            formControlName="gender" mode="ios">
                             <ion-select-option value="female">Female</ion-select-option>
                             <ion-select-option value="male">Male</ion-select-option>
                         </ion-select>
@@ -122,7 +103,8 @@
                         <ion-label class="label-fontsize-custom">Marital Status
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-select placeholder="Marital Status" okText="Select" cancelText="Dismiss" name="mstatus" formControlName="marital_status" mode="ios">
+                        <ion-select placeholder="Marital Status" okText="Select" cancelText="Dismiss" name="mstatus"
+                            formControlName="marital_status" mode="ios">
                             <ion-select-option value="single">Single</ion-select-option>
                             <ion-select-option value="married">Married</ion-select-option>
                             <ion-select-option value="divorce">Divorce</ion-select-option>
@@ -139,7 +121,7 @@
 
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label class="label-fontsize-custom">DOB
+                        <ion-label class="label-fontsize-custom">Date Of Birth
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
                         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="MMMM/DD/YYYY" placeholder="Select
@@ -149,27 +131,40 @@
                         &&(profileForm.controls.dob.dirty
                         ||profileForm.controls.dob.touched)">
                         <div *ngIf="profileForm.controls['dob'].errors['required']">
-                            <ion-text color="danger">DOB is required.</ion-text>
+                            <ion-text color="danger">Date Of Birth is required.</ion-text>
                         </div>
                     </div>
                 </ion-col>
+
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Email
-                            <ion-text color="danger"> * </ion-text>
-                        </ion-label>
+                        <ion-label position="floating" class="label-fontsize">Email</ion-label>
                         <ion-input type="email" name="email" formControlName="email"></ion-input>
                     </ion-item>
-                    <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.email.valid
-                        &&(profileForm.controls.email.dirty
-                        ||profileForm.controls.email.touched)">
-                        <div *ngIf="profileForm.controls['email'].errors['required']">
-                            <ion-text color="danger">Email is required.</ion-text>
-                        </div>
-                        <div *ngIf="profileForm.controls['email'].errors['email']">
-                            <ion-text color="danger">Enter proper email.</ion-text>
-                        </div>
-                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Home No.
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_home"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Office No.
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_office"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label position="floating" class="label-fontsize">Other No.
+                        </ion-label>
+                        <ion-input type="number" name="cno" formControlName="phone_other"></ion-input>
+                    </ion-item>
                 </ion-col>
 
                 <ion-col size="12">
@@ -188,13 +183,12 @@
                     </ion-item>
                 </ion-col>
 
-
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Address
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-textarea name="address" formControlName="address"></ion-textarea>
+                        <ion-input type="text" name="address" formControlName="address"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.address.valid
                         &&(profileForm.controls.address.dirty

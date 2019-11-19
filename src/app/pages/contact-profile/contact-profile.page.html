@@ -11,7 +11,7 @@
     <ion-card class="ImageCard ion-no-margin">
         <ion-row>
             <ion-col class="ion-text-center" size="12">
-                <img class="propicImg" [src]="userImage == null ? '../../../assets/img/user.png' : userImage" />
+                <img class="propicImg" [src]="userImage" (click)="openImage(userImage)"/>
             </ion-col>
         </ion-row>
     </ion-card>
@@ -36,7 +36,7 @@
             </ion-label>
         </ion-card>
 
-        <ion-card padding *ngIf="userData">
+        <ion-card class="ion-padding" *ngIf="userData">
             <ion-label>
                 <h1 class="fc-blue">Address</h1>
             </ion-label>
@@ -65,7 +65,7 @@
                     {{userData?.full_name}}
                 </h2>
                 <h2>
-                    DOB: {{userData?.dob}}
+                    DOB: {{userData?.dob | formatDate:'DD-MMM-YYYY'}}
                 </h2>
             </ion-label>
         </ion-card>

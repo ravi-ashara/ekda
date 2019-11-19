@@ -13,6 +13,7 @@
             <ion-card-title>{{list?.title}}</ion-card-title>
         </ion-card-header>
 
-        <ion-card-content class="line-wrap-desc" [innerHTML]="list.description"></ion-card-content>
+        <ion-card-content class="line-wrap-desc" [innerHTML]="list?.description"></ion-card-content>
+        <p class="ion-text-right ion-margin-end">{{list?.start_date | formatDate : 'LLL'}}</p>
     </ion-card>
 </ion-content>

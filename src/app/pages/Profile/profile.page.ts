@@ -1,6 +1,6 @@
 import { LoaderModule } from '../../Module/loader/loader.module';
 import { Component } from '@angular/core';
-import { ActionSheetController, NavController, Events } from '@ionic/angular';
+import { ActionSheetController, NavController, Events, ModalController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -10,6 +10,7 @@ import { AlertModule } from '../../Module/alert/alert.module';
 import { BasicService } from 'src/app/service/Basic/basic.service';
 import { Storage } from '@ionic/storage';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FiltersPage } from '../filters/filters.page';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -35,7 +36,8 @@ export class ProfilePage {
     public bs: BasicService,
     public storage: Storage,
     public _DomSanitizer: DomSanitizer,
-    public event: Events
+    public event: Events,
+    public modalController: ModalController
   ) {
     this.profileForm = this.formBuilder.group({
       profile_pic: '',
@@ -45,7 +47,7 @@ export class ProfilePage {
       sur_name: ['', Validators.required],
       gender: ['', Validators.required],
       dob: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: '',
       address: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
@@ -164,6 +166,17 @@ export class ProfilePage {
     );
   }
 
+  openImage(val: any) {
+    this.modalController.create({
+      component: FiltersPage,
+      componentProps: {
+        image: val
+      }
+    }).then((modal: any) => {
+      modal.present();
+    })
+  }
+  
   profileFormSubmit(val: any) {
     this.bs.showLoader();
     val.value.profile_pic = this.userImage;
@@ -176,7 +189,7 @@ export class ProfilePage {
       const data = Object.assign(uservalue, userId);
       this.bs.hitApi('post', 'user/update-profile', data).subscribe((receivedData: any) => {
         this.bs.setUserData(receivedData.data);
-        this.userImage = receivedData.data.profile_pic
+        this.userImage = receivedData.data.profile_pic == null ? '../../../assets/img/user.png' : receivedData.data.profile_pic
         this.bs.DismissLoader();
         this.alert.showToast('Your profile update successfully.', 'top', 2000);
         this.navCtrl.navigateRoot(['/my-calendar']);

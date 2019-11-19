@@ -23,6 +23,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 /** Pipes */
 import { PipesModule } from './pipes/pipes.module';
+import { FiltersPageModule } from './pages/filters/filters.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { PipesModule } from './pipes/pipes.module';
     ActionSheetModule,
     HttpClientModule,
     AngularMultiSelectModule,
+    FiltersPageModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
