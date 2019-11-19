@@ -11,6 +11,7 @@ import { BasicService } from 'src/app/service/Basic/basic.service';
 import { Storage } from '@ionic/storage';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FiltersPage } from '../filters/filters.page';
+import * as moment from 'moment';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -181,6 +182,7 @@ export class ProfilePage {
     this.bs.showLoader();
     val.value.profile_pic = this.userImage;
     val.value.phone_no = Number(val.value.phone_no);
+    val.value.dob = moment(val.value.dob);
     if (val.value) {
       const uservalue = val.value;
       const userId = {
