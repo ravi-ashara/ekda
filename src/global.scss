@@ -53,7 +53,10 @@ hr {
 
 ion-item,
 .activated {
-    --background-activated: #ffffffff;
-    --background-focused: #ffffffff;
-    --background-color: #ffffffff;
+    --background-activated: #ffffff;
+    --background-focused: #ffffff;
+    --background-color: #ffffff;
+}
+ion-menu-button{
+    color: #ffffff;
 }

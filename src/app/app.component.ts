@@ -74,13 +74,11 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.storage.get('userData').then(data => {
-        if (data != null) {
-          this.navCtrl.navigateRoot(['/my-calendar']);
-        } else {
-          this.navCtrl.navigateRoot(['/login']);
-        }
-      });
+      if (localStorage.token != undefined) {
+        this.navCtrl.navigateRoot(['/my-calendar']);
+      } else {
+        this.navCtrl.navigateRoot(['/login']);
+      }
       this.bs.getUserData();
       this.handleHardwareBackButton();
       this.pushNotifications();
