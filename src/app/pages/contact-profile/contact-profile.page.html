@@ -11,7 +11,7 @@
     <ion-card class="ImageCard ion-no-margin">
         <ion-row>
             <ion-col class="ion-text-center" size="12">
-                <img class="propicImg" [src]="userImage" (click)="openImage(userImage)"/>
+                <img class="propicImg" [src]="userImage" (click)="openImage(userImage)" />
             </ion-col>
         </ion-row>
     </ion-card>
@@ -44,16 +44,16 @@
                 <h2 class="font-black">
                     {{userData?.address}},
                 </h2>
-                <h2>
+                <h2 *ngIf="userData?.city">
                     {{userData?.city}},
                 </h2>
-                <h2>
+                <h2 *ngIf="userData?.state">
                     {{userData?.state}},
                 </h2>
-                <h2>
+                <h2 *ngIf="userData?.country">
                     {{userData?.country}}
                 </h2>
-                <h3>
+                <h3 *ngIf="userData?.pin_code">
                     {{userData?.pin_code}}
                 </h3>
             </ion-label>
