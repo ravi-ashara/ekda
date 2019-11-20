@@ -35,7 +35,6 @@ export class BasicService {
   phone_home: any;
   phone_office: any;
   phone_other: any;
-
   constructor(
     public http: HttpClient,
     public loadingCtrl: LoadingController,

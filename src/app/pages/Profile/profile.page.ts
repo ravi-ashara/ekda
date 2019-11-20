@@ -51,6 +51,7 @@ export class ProfilePage {
       email: '',
       address: ['', Validators.required],
       city: ['', Validators.required],
+      state: ['', Validators.required],
       country: ['', Validators.required],
       pin_code: ['', [Validators.required, Validators.pattern('[0-9]{6}')]],
       education: [''],
