@@ -26,6 +26,11 @@ export class DonorsPage {
         if (receivedData.status) {
           this.donorData = receivedData.data.donor_lists;
         } else {
+          if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+            this.bs.authFail();
+          }else{
+            this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
+          }
         }
       },error => {
         this.bs.DismissLoader();

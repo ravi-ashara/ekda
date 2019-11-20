@@ -33,7 +33,11 @@ export class FeedbackPage {
             this.navCtrl.navigateRoot(['/my-calendar']);
           });
         } else {
-          this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
+          if(response.msg == "Authentication Failed." || response.msg == "Authentication Failed"){
+            this.bs.authFail();
+          }else{
+            this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
+          }
         }
       }, error => {
         this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');

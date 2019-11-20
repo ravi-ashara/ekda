@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BasicService } from 'src/app/service/Basic/basic.service';
 import { NavController } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
+import { AlertModule } from 'src/app/Module/alert/alert.module';
 
 @Component({
   selector: 'app-news-list',
@@ -14,7 +15,8 @@ export class NewsListPage {
   constructor(
     public bs: BasicService,
     public navCtrl: NavController,
-    public router: Router
+    public router: Router,
+    public alert: AlertModule
   ) { }
 
   ionViewWillEnter(){
@@ -30,10 +32,15 @@ export class NewsListPage {
       if (receivedData.status) {
         this.newsData = receivedData.data.news_lists;
       } else {
-        // clear user storage Or logout forcefully
+        if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+          this.bs.authFail();
+        }else{
+          this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
+        }
       }
     }, error => {
-      console.log(error);
+      this.bs.DismissLoader();
+      this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
     })
   }
 

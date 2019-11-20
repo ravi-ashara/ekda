@@ -12,7 +12,6 @@ import { FiltersPage } from '../filters/filters.page';
 export class ContactProfilePage {
 
   public userImage: any;
-  // public profileForm: FormGroup;
   public profileData: any;
   public phno: any;
   userData: any = {};

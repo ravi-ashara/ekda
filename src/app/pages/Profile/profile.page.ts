@@ -191,15 +191,23 @@ export class ProfilePage {
       };
       const data = Object.assign(uservalue, userId);
       this.bs.hitApi('post', 'user/update-profile', data).subscribe((receivedData: any) => {
-        this.bs.setUserData(receivedData.data);
-        this.userImage = receivedData.data.profile_pic == null ? '../../../assets/img/user.png' : receivedData.data.profile_pic
         this.bs.DismissLoader();
-        this.alert.showToast('Your profile update successfully.', 'top', 2000);
-        this.navCtrl.navigateRoot(['/my-calendar']);
-        this.event.publish('setUserData');
+        if(receivedData.status){
+          this.bs.setUserData(receivedData.data);
+          this.userImage = receivedData.data.profile_pic == null ? '../../../assets/img/user.png' : receivedData.data.profile_pic
+          this.alert.showToast('Your profile update successfully.', 'top', 2000);
+          this.navCtrl.navigateRoot(['/my-calendar']);
+          this.event.publish('setUserData');
+        }else{
+          if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+            this.bs.authFail();
+          }else{
+            this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
+          }
+        }
       }, error => {
         this.bs.DismissLoader();
-        console.log(error);
+        this.alert.openAlert('27 Ekda', 'Error from server side..', 'OK');
       });
     } else {
       this.bs.DismissLoader();

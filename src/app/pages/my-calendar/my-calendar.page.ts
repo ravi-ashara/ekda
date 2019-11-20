@@ -33,8 +33,14 @@ export class MyCalendarPage {
       user_id: localStorage.userID
     }
     this.bs.hitApi('post', 'user/user-list', data).subscribe((receivedData: any) => {
-      this.userData = receivedData.data.user_list;
       this.bs.DismissLoader();
+      if(receivedData.status){
+        this.userData = receivedData.data.user_list;
+      }else{
+        if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+          this.bs.authFail();
+        }
+      }
     });
   }
 
@@ -55,7 +61,13 @@ export class MyCalendarPage {
       this.bs.showLoader();
       this.bs.hitApi('post', 'user/user-list', this.filterSelectedData).subscribe((receivedData: any) => {
         this.bs.DismissLoader();
-        this.userData = receivedData.data.user_list;
+        if(receivedData.status){
+          this.userData = receivedData.data.user_list;
+        }else{
+          if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+            this.bs.authFail();
+          }
+        }
       }, error => {
         this.bs.DismissLoader();
         console.log(error);

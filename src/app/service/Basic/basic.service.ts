@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoadingController, ToastController, Platform } from '@ionic/angular';
+import { LoadingController, ToastController, Platform, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import * as $ from 'jquery';
 import * as moment from 'moment';
+import { AlertModule } from 'src/app/Module/alert/alert.module';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,9 @@ export class BasicService {
     public loadingCtrl: LoadingController,
     public toastController: ToastController,
     public storage: Storage,
-    public platform: Platform) {
+    public platform: Platform,
+    public navCtrl: NavController,
+    public alertCtrl: AlertModule) {
 
   }
 
@@ -144,5 +147,14 @@ export class BasicService {
         this.phone_other = data.phone_other;
       }
     });
+  }
+
+  authFail() {
+    this.alertCtrl.showToast('Authentication Failed.','top',5000);
+    localStorage.removeItem('phoneNo');
+    localStorage.removeItem('userID');
+    this.storage.remove('userData');
+    localStorage.removeItem('token');
+    this.navCtrl.navigateRoot(['/login'])
   }
 }
