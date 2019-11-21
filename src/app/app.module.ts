@@ -24,6 +24,7 @@ import { IonicStorageModule } from '@ionic/storage';
 /** Pipes */
 import { PipesModule } from './pipes/pipes.module';
 import { FiltersPageModule } from './pages/filters/filters.module';
+import { AdvertisementPopupPageModule } from './pages/advertisement-popup/advertisement-popup.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +43,8 @@ import { FiltersPageModule } from './pages/filters/filters.module';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    PipesModule
+    PipesModule,
+    AdvertisementPopupPageModule
   ],
   providers: [
     StatusBar,

@@ -50,9 +50,11 @@ const routes: Routes = [
   {
     path: 'advertisement',
     loadChildren: './pages/advertisement/advertisement.module#AdvertisementPageModule'
-  }
-]
-  ;
+  },
+  {
+    path: 'advertisement-popup',
+    loadChildren: './pages/advertisement-popup/advertisement-popup.module#AdvertisementPopupPageModule'
+  }];
 
 @NgModule({
   imports: [

@@ -1,17 +1,10 @@
-.fixed[scrollx=true],
-div[scrolly=true] {
-    position: relative;
-    overflow: hidden;
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
+.fixed {
+    position: absolute;
+    overflow-y: scroll;
+    height: -webkit-fill-available;
 }
 
-.fixed[scrollx=true] {
-    overflow-x: auto;
-}
-
-.fixed[scrolly=true] {
-    overflow-y: auto;
+.ion-footerClass {
+    z-index: 999999;
+    background-color: #fff;
 }

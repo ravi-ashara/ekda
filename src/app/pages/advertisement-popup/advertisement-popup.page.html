@@ -1,9 +1,11 @@
 <ion-header>
     <ion-toolbar mode=ios>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
         <ion-title>Advertisement</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="closePopup()">
+                <ion-icon name="close" color="white"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -13,7 +15,6 @@
             For Advertisement, Please fill up below details.
         </ion-label>
     </div>
-
     <ion-item class="textbox-style ion-no-padding">
         <ion-label class="font-black">{{bs.mobileNo}}</ion-label>
     </ion-item>
