@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { Platform, NavController, Events, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -61,7 +61,8 @@ export class AppComponent {
     public bs: BasicService,
     public storage: Storage,
     public event: Events,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public zone: NgZone
   ) {
     this.initializeApp();
     this.event.unsubscribe('setUserData');
@@ -129,9 +130,11 @@ export class AppComponent {
   }
 
   setUserData() {
-    this.storage.get('userData').then(data => {
-      this.userData = data;
-    });
+    this.zone.run(() => {
+      this.storage.get('userData').then(data => {
+        this.userData = data;
+      });
+    })
   }
 
   pushNotifications() {

@@ -2,7 +2,7 @@
     <!-- <ion-split-pane> -->
     <ion-menu class="menu" mode="ios" contentId="my-menu">
         <ion-header class="menu_header ion-text-center ion-padding-top" mode="ios">
-            <img [src]="userData?.profile_pic != null ? userData?.profile_pic : '../../assets/img/user.png'" class="user_logo" (click)="openImage(userData)"/>
+            <img [src]="userData?.profile_pic != null ? userData?.profile_pic : '../../assets/img/user.png'" class="user_logo" (click)="openImage(userData?.profile_pic)"/>
             <ion-toolbar class="ion-text-center" color="primary">
                 <ion-title>{{userData?.first_name == null ? '' : userData?.first_name}} {{userData?.sur_name == null ? '' : userData?.sur_name}}</ion-title>
             </ion-toolbar>

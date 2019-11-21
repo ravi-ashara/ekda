@@ -68,7 +68,7 @@ export class ProfilePage {
       } else {
         this.storage.get('userData').then(data => {
           this.profileForm.patchValue(data);
-          this.userImage = data.profile_pic == null ?  '../../../assets/img/user.png' : data.profile_pic;
+          this.userImage = data.profile_pic == null ? '../../../assets/img/user.png' : data.profile_pic;
         });
       }
     });
@@ -116,13 +116,17 @@ export class ProfilePage {
     if (val === 'Take Photo') {
       const options: CameraOptions = {
         quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
+        destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
+        mediaType: this.camera.MediaType.PICTURE,
+        allowEdit: true,
+        targetWidth: 500,
+        targetHeight: 500
       };
       this.camera.getPicture(options).then(
         imageData => {
-          this.cropImage(imageData);
+          this.userImage = imageData;
+          this.profileFormSubmit(this.profileForm);
         },
         err => {
           console.log(err);
@@ -131,15 +135,18 @@ export class ProfilePage {
     } else {
       const options: CameraOptions = {
         quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
+        destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
         sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
-        allowEdit: false
+        allowEdit: true,
+        targetWidth: 500,
+        targetHeight: 500
       };
       this.camera.getPicture(options).then(
         imageData => {
-          this.cropImage(imageData);
+          this.userImage = imageData;
+          this.profileFormSubmit(this.profileForm);
         },
         err => {
           console.log(err);
@@ -148,26 +155,27 @@ export class ProfilePage {
     }
   }
 
-  cropImage(val: any) {
-    this.crop
-      .crop(val, { quality: 100 })
-      .then(
-        newImage => this.convertBase64(newImage),
-        error => console.error('Error cropping image', error)
-      );
-  }
+  // cropImage(val: any) {
 
-  convertBase64(val: any) {
-    this.base64.encodeFile(val).then(
-      (base64File: string) => {
-        this.userImage = base64File;
-        this.profileFormSubmit(this.profileForm);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
+  //   this.crop
+  //     .crop(val, { quality: 100 })
+  //     .then(
+  //       newImage => this.convertBase64(newImage),
+  //       error => console.error('Error cropping image', error)
+  //     );
+  // }
+
+  // convertBase64(val: any) {
+  //   this.base64.encodeFile(val).then(
+  //     (base64File: any) => {
+  //       this.userImage = base64File;
+  //       this.profileFormSubmit(this.profileForm);
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   openImage(val: any) {
     this.modalController.create({
@@ -196,10 +204,10 @@ export class ProfilePage {
         this.bs.DismissLoader();
         if (receivedData.status) {
           this.bs.setUserData(receivedData.data);
+          this.event.publish('setUserData');
           this.userImage = receivedData.data.profile_pic == null ? '../../../assets/img/user.png' : receivedData.data.profile_pic
           this.alert.showToast('Your profile update successfully.', 'top', 2000);
           this.navCtrl.navigateRoot(['/my-calendar']);
-          this.event.publish('setUserData');
         } else {
           if (receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed") {
             this.bs.authFail();
