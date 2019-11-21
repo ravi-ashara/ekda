@@ -18,47 +18,7 @@
     <div style="margin-top: -50px;">
         <ion-card class="contentCard ion-padding" *ngIf="userData">
             <ion-label>
-                <h1 class="fc-blue">Contact</h1>
-            </ion-label>
-            <ion-label>
-                <h2>
-                    {{userData?.phone}} (Personal)
-                </h2>
-                <h2 *ngIf="userData?.phone_home">
-                    {{userData?.phone_home}} (Home)
-                </h2>
-                <h2 *ngIf="userData?.phone_office">
-                    {{userData?.phone_office}} (Office)
-                </h2>
-                <h2 *ngIf="userData?.phone_other">
-                    {{userData?.phone_other}} (Other)
-                </h2>
-            </ion-label>
-        </ion-card>
-
-        <ion-card class="ion-padding" *ngIf="userData">
-            <ion-label>
-                <h1 class="fc-blue">Address</h1>
-            </ion-label>
-            <ion-label>
-                <h2 class="font-black">
-                    {{userData?.address}},
-                </h2>
-                <h2 *ngIf="userData?.city">
-                    {{userData?.city}},
-                </h2>
-                <h2 *ngIf="userData?.state">
-                    {{userData?.state}},  {{userData?.pin_code}}
-                </h2>
-                <h2 *ngIf="userData?.country">
-                    {{userData?.country}}
-                </h2>
-            </ion-label>
-        </ion-card>
-
-        <ion-card class="radiusBottom ion-padding" *ngIf="userData">
-            <ion-label>
-                <h1 class="fc-blue">About</h1>
+                <h1 class="fc-blue">About Us</h1>
             </ion-label>
             <ion-label>
                 <h2 class="font-black">
@@ -84,6 +44,48 @@
                 </h2>
                 <h2 *ngIf="userData?.occupation != null">
                     Occupations: {{userData?.occupation}}
+                </h2>
+            </ion-label>
+
+        </ion-card>
+
+        <ion-card class="ion-padding" *ngIf="userData">
+            <ion-label>
+                <h1 class="fc-blue">Address: </h1>
+            </ion-label>
+            <ion-label>
+                <h2 class="font-black">
+                    {{userData?.address}},
+                </h2>
+                <h2 *ngIf="userData?.city">
+                    {{userData?.city}},
+                </h2>
+                <h2 *ngIf="userData?.state">
+                    {{userData?.state}}, {{userData?.pin_code}}
+                </h2>
+                <h2 *ngIf="userData?.country">
+                    {{userData?.country}}
+                </h2>
+            </ion-label>
+        </ion-card>
+
+        <ion-card class="radiusBottom ion-padding" *ngIf="userData">
+            <ion-label>
+                <h1 class="fc-blue">Contact :</h1>
+            </ion-label>
+
+            <ion-label>
+                <h2>
+                    {{userData?.phone}} (Personal)
+                </h2>
+                <h2 *ngIf="userData?.phone_home">
+                    {{userData?.phone_home}} (Home)
+                </h2>
+                <h2 *ngIf="userData?.phone_office">
+                    {{userData?.phone_office}} (Office)
+                </h2>
+                <h2 *ngIf="userData?.phone_other">
+                    {{userData?.phone_other}} (Other)
                 </h2>
             </ion-label>
         </ion-card>

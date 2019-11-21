@@ -104,11 +104,13 @@ export class AppComponent {
       } else if (this.router.url === '/login') {
         navigator['app'].exitApp();
       } else {
-        this.alertModule.openConfirm('27 Ekda', 'Are you sure you want to exit ?', 'Exit', (res: any) => {
-          if (res === "Success") {
-            navigator['app'].exitApp();
-          }
-        });
+        if(this.router.url === '/my-calendar'){
+          this.alertModule.openConfirm('27 Ekda', 'Are you sure you want to exit ?', 'Exit', (res: any) => {
+            if (res === "Success") {
+              navigator['app'].exitApp();
+            }
+          });
+        }
       }
     });
   }

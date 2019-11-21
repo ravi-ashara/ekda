@@ -15,8 +15,8 @@
 <ion-content class="greyBg">
     <ion-row *ngIf="filterData" class="ion-padding">
         <ion-col size="12">
-            <ion-item>
-                <ion-label>Gender</ion-label>
+            <ion-item lines="none">
+                <ion-label position="floating">Gender</ion-label>
                 <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender" mode="ios" [(ngModel)]="filterSelectedData.gender">
                     <ion-select-option value="F">Female</ion-select-option>
                     <ion-select-option value="M">Male</ion-select-option>
@@ -24,14 +24,14 @@
             </ion-item>
         </ion-col>
         <ion-col size="6">
-            <ion-item>
+            <ion-item lines="none">
                 <ion-label position="floating">Pincode</ion-label>
                 <ion-input type="number" name="pincode" [(ngModel)]="filterSelectedData.pincode"></ion-input>
             </ion-item>
         </ion-col>
 
         <ion-col size="6">
-            <ion-item>
+            <ion-item lines="none">
                 <ion-label position="floating">City</ion-label>
                 <ion-input type="text" [(ngModel)]="filterSelectedData.city"></ion-input>
             </ion-item>
@@ -41,7 +41,7 @@
             <ion-button shape="round" (click)="filterUserList()">Filter Users</ion-button>
         </ion-col>
     </ion-row>
-    <ion-item>
+    <ion-item lines="none">
         <ion-input [(ngModel)]="searchKey" type="text" id="search" placeholder="Search By Name" (keyup.enter)="searchProduct(searchKey)">
         </ion-input>
     </ion-item>

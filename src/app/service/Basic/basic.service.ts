@@ -36,6 +36,7 @@ export class BasicService {
   phone_home: any;
   phone_office: any;
   phone_other: any;
+  blood_group: any;
   constructor(
     public http: HttpClient,
     public loadingCtrl: LoadingController,
@@ -121,6 +122,7 @@ export class BasicService {
     this.phone_home = data.phone_home;
     this.phone_office = data.phone_office;
     this.phone_other = data.phone_other;
+    this.blood_group = data.blood_group;
   }
 
   async getUserData() {
@@ -145,12 +147,13 @@ export class BasicService {
         this.phone_home = data.phone_home;
         this.phone_office = data.phone_office;
         this.phone_other = data.phone_other;
+        this.blood_group = data.blood_group;
       }
     });
   }
 
   authFail() {
-    this.alertCtrl.showToast('Authentication Failed.','top',5000);
+    this.alertCtrl.showToast('Authentication Failed.', 'top', 5000);
     localStorage.removeItem('phoneNo');
     localStorage.removeItem('userID');
     this.storage.remove('userData');

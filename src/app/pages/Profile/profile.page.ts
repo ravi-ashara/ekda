@@ -41,6 +41,7 @@ export class ProfilePage {
     public modalController: ModalController
   ) {
     this.profileForm = this.formBuilder.group({
+      blood_group: '',
       profile_pic: '',
       phone_no: '',
       first_name: ['', Validators.required],
@@ -67,7 +68,7 @@ export class ProfilePage {
       } else {
         this.storage.get('userData').then(data => {
           this.profileForm.patchValue(data);
-          this.userImage = data.profile_pic;
+          this.userImage = data.profile_pic == null ?  '../../../assets/img/user.png' : data.profile_pic;
         });
       }
     });
@@ -134,7 +135,7 @@ export class ProfilePage {
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
         sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
-        allowEdit: true
+        allowEdit: false
       };
       this.camera.getPicture(options).then(
         imageData => {
@@ -178,10 +179,11 @@ export class ProfilePage {
       modal.present();
     })
   }
-  
+
   profileFormSubmit(val: any) {
     this.bs.showLoader();
-    val.value.profile_pic = this.userImage;
+    let checkProfile_assets = this.userImage.includes("assets");
+    val.value.profile_pic = checkProfile_assets == true ? null : this.userImage;
     val.value.phone_no = Number(val.value.phone_no);
     val.value.dob = moment(val.value.dob);
     if (val.value) {
@@ -192,16 +194,16 @@ export class ProfilePage {
       const data = Object.assign(uservalue, userId);
       this.bs.hitApi('post', 'user/update-profile', data).subscribe((receivedData: any) => {
         this.bs.DismissLoader();
-        if(receivedData.status){
+        if (receivedData.status) {
           this.bs.setUserData(receivedData.data);
           this.userImage = receivedData.data.profile_pic == null ? '../../../assets/img/user.png' : receivedData.data.profile_pic
           this.alert.showToast('Your profile update successfully.', 'top', 2000);
           this.navCtrl.navigateRoot(['/my-calendar']);
           this.event.publish('setUserData');
-        }else{
-          if(receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed"){
+        } else {
+          if (receivedData.msg == "Authentication Failed." || receivedData.msg == "Authentication Failed") {
             this.bs.authFail();
-          }else{
+          } else {
             this.alert.openAlert('27 Ekda', 'Opps something wrong..', 'OK');
           }
         }

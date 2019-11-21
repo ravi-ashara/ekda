@@ -14,7 +14,7 @@
                 <img class="propicImg" [src]="userImage" (click)="openImage(userImage)" />
             </ion-col>
             <ion-col class="ion-text-center" size="12">
-                <ion-text color="light" (click)="showactionSheet()"> Change Profile Photo</ion-text>
+                <ion-text color="primary" (click)="showactionSheet()"> Change Profile Photo</ion-text>
             </ion-col>
         </ion-row>
     </ion-card>
@@ -80,7 +80,7 @@
 
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label class="label-fontsize-custom">Gender
+                        <ion-label class="label-fontsize" position="floating">Gender
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
                         <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender"
@@ -100,10 +100,10 @@
 
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label class="label-fontsize-custom">Marital Status
+                        <ion-label class="label-fontsize" position="floating">Marital Status
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-select placeholder="Marital Status" okText="Select" cancelText="Dismiss" name="mstatus"
+                        <ion-select placeholder="Marital Status" okText="Select" cancelText="Dismiss" name="marital_status"
                             formControlName="marital_status" mode="ios">
                             <ion-select-option value="single">Single</ion-select-option>
                             <ion-select-option value="married">Married</ion-select-option>
@@ -121,7 +121,7 @@
 
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label class="label-fontsize-custom">Date Of Birth
+                        <ion-label class="label-fontsize" position="floating">Date Of Birth
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
                         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="MMMM/DD/YYYY" placeholder="Select
@@ -140,6 +140,24 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Email</ion-label>
                         <ion-input type="email" name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-item class="ion-no-padding">
+                        <ion-label class="label-fontsize" position="floating">Blood Group</ion-label>
+                        <ion-select placeholder="Blood Group" okText="Select" cancelText="Dismiss" name="blood_group"
+                            formControlName="blood_group" mode="ios">
+                            <ion-select-option value="A+">A+</ion-select-option>
+                            <ion-select-option value="A-">A-</ion-select-option>
+                            <ion-select-option value="B+">B+</ion-select-option>
+                            <ion-select-option value="B-">B-</ion-select-option>
+                            <ion-select-option value="O+">O+</ion-select-option>
+                            <ion-select-option value="O-">O-</ion-select-option>
+                            <ion-select-option value="AB+">AB+</ion-select-option>
+                            <ion-select-option value="AB-">AB-</ion-select-option>
+                        </ion-select>
+
                     </ion-item>
                 </ion-col>
 

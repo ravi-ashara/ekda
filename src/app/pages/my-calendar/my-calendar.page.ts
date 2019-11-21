@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import { MenuController, NavController, Events } from '@ionic/angular';
 import { BasicService } from 'src/app/service/Basic/basic.service';
 @Component({
   selector: 'app-my-calendar',
@@ -21,7 +21,8 @@ export class MyCalendarPage {
   constructor(
     public menuCtrl: MenuController,
     public navCtrl: NavController,
-    public bs: BasicService
+    public bs: BasicService,
+    public event: Events
   ) {
     this.menuCtrl.enable(true);
     this.getUserList();
@@ -47,6 +48,7 @@ export class MyCalendarPage {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
     this.dummy = this.userData;
+    this.event.publish('setUserData');
   }
 
   filterPage() {
