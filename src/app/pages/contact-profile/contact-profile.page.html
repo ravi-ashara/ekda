@@ -48,14 +48,11 @@
                     {{userData?.city}},
                 </h2>
                 <h2 *ngIf="userData?.state">
-                    {{userData?.state}},
+                    {{userData?.state}},  {{userData?.pin_code}}
                 </h2>
                 <h2 *ngIf="userData?.country">
                     {{userData?.country}}
                 </h2>
-                <h3 *ngIf="userData?.pin_code">
-                    {{userData?.pin_code}}
-                </h3>
             </ion-label>
         </ion-card>
 
@@ -67,8 +64,26 @@
                 <h2 class="font-black">
                     {{userData?.full_name}}
                 </h2>
-                <h2>
-                    DOB: {{userData?.dob | formatDate:'DD-MMM-YYYY'}}
+                <h2 *ngIf="userData?.email != null">
+                    Email: {{userData?.email}}
+                </h2>
+                <h2 *ngIf="userData?.gender != null">
+                    Gender: {{userData?.gender == 'male' ? 'Male': 'Female'}}
+                </h2>
+                <h2 *ngIf="userData?.dob != null">
+                    Date Of Birth: {{userData?.dob | formatDate:'DD-MMM-YYYY'}}
+                </h2>
+                <h2 *ngIf="userData?.marital_status != '' && userData?.marital_status != null">
+                    Marital Status: {{userData?.marital_status}}
+                </h2>
+                <h2 *ngIf="userData?.blood_group != null">
+                    Blood Group: {{userData?.blood_group}}
+                </h2>
+                <h2 *ngIf="userData?.education != null">
+                    Education: {{userData?.education}}
+                </h2>
+                <h2 *ngIf="userData?.occupation != null">
+                    Occupations: {{userData?.occupation}}
                 </h2>
             </ion-label>
         </ion-card>
