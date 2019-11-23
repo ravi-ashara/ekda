@@ -7,9 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-import { Crop } from '@ionic-native/crop/ngx';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { Base64 } from '@ionic-native/base64/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Push } from '@ionic-native/push/ngx';
@@ -50,8 +48,6 @@ import { AdvertisementPopupPageModule } from './pages/advertisement-popup/advert
     StatusBar,
     SplashScreen,
     Camera,
-    Crop,
-    Base64,
     Push,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

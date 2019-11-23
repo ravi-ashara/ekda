@@ -2,14 +2,11 @@ import { LoaderModule } from '../../Module/loader/loader.module';
 import { Component } from '@angular/core';
 import { ActionSheetController, NavController, Events, ModalController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { Crop } from '@ionic-native/crop/ngx';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Base64 } from '@ionic-native/base64/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertModule } from '../../Module/alert/alert.module';
 import { BasicService } from 'src/app/service/Basic/basic.service';
 import { Storage } from '@ionic/storage';
-import { DomSanitizer } from '@angular/platform-browser';
 import { FiltersPage } from '../filters/filters.page';
 import * as moment from 'moment';
 @Component({
@@ -26,17 +23,14 @@ export class ProfilePage {
   constructor(
     public actionSheetController: ActionSheetController,
     public camera: Camera,
-    public crop: Crop,
     public formBuilder: FormBuilder,
     public loader: LoaderModule,
-    public base64: Base64,
     public router: Router,
     public route: ActivatedRoute,
     public alert: AlertModule,
     public navCtrl: NavController,
     public bs: BasicService,
     public storage: Storage,
-    public _DomSanitizer: DomSanitizer,
     public event: Events,
     public modalController: ModalController
   ) {
