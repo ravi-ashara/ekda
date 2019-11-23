@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { BasicService } from 'src/app/service/Basic/basic.service';
 import { AlertModule } from '../../Module/alert/alert.module';
-import { ModalController } from '@ionic/angular';
-import { AdvertisementPopupPage } from '../advertisement-popup/advertisement-popup.page';
-
 @Component({
   selector: 'app-donors',
   templateUrl: './donors.page.html',
@@ -14,8 +11,7 @@ export class DonorsPage {
   public donorData: any;
 
   constructor(public bs: BasicService,
-    public alert: AlertModule,
-    public modalCtrl: ModalController) {
+    public alert: AlertModule) {
     this.getDonorList();
   }
 
@@ -44,13 +40,5 @@ export class DonorsPage {
       console.log(error);
       this.bs.DismissLoader();
     }
-  }
-
-  advertisementPopup() {
-    this.modalCtrl.create({
-      component: AdvertisementPopupPage
-    }).then((modal: any) => {
-      modal.present();
-    })
   }
 }

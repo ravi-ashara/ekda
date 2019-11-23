@@ -18,8 +18,9 @@
             <ion-item lines="none">
                 <ion-label position="floating">Gender</ion-label>
                 <ion-select placeholder="Select Gender" okText="Select" cancelText="Dismiss" name="gender" mode="ios" [(ngModel)]="filterSelectedData.gender">
-                    <ion-select-option value="F">Female</ion-select-option>
-                    <ion-select-option value="M">Male</ion-select-option>
+                    <ion-select-option value="">Select Gender</ion-select-option>
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-col>
@@ -37,12 +38,15 @@
             </ion-item>
         </ion-col>
 
-        <ion-col size="12" class="ion-text-center">
-            <ion-button shape="round" (click)="filterUserList()">Filter Users</ion-button>
+        <ion-col size="6" class="ion-text-center">
+            <ion-button (click)="filterUserList()">Filter Users</ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+            <ion-button color="danger" (click)="clearFilter()">Clear Filter</ion-button>
         </ion-col>
     </ion-row>
     <ion-item lines="none">
-        <ion-input [(ngModel)]="searchKey" type="text" id="search" placeholder="Search By Name" (keyup.enter)="searchProduct(searchKey)">
+        <ion-input [(ngModel)]="searchKey" type="text" id="search" placeholder="Search By Name">
         </ion-input>
     </ion-item>
     <ion-list *ngIf="userData?.length != 0; else nodataFound">

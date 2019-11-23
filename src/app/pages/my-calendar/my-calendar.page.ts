@@ -9,7 +9,7 @@ import { BasicService } from 'src/app/service/Basic/basic.service';
 export class MyCalendarPage {
   public filterData: boolean = false;
   public searchKey: any = '';
-  public dummy: any = '';
+  // public dummy: any = '';
   public userData: any;
   public filterSelectedData = {
     is_filter: true,
@@ -47,13 +47,20 @@ export class MyCalendarPage {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
-    this.dummy = this.userData;
+    // this.dummy = this.userData;
     this.event.publish('setUserData');
   }
 
   filterPage() {
     this.filterData = !this.filterData;
     if(!this.filterData){
+      this.filterSelectedData = {
+        is_filter: true,
+        gender: '',
+        pincode: '',
+        city: '',
+        user_id: localStorage.userID
+      };
       this.getUserList();
     }
   }
@@ -88,12 +95,17 @@ export class MyCalendarPage {
     });
   }
 
-  searchProduct(searchKey) {
-    this.userData = this.userData.filter(d => d.fname.toLowerCase().includes(searchKey.toLowerCase()));
-  }
+  // searchProduct(searchKey) {
+  //   this.userData = this.userData.filter(d => d.fname.toLowerCase().includes(searchKey.toLowerCase()));
+  // }
 
-  closeSearch() {
-    this.searchKey = '';
-    this.userData = this.dummy;
+  clearFilter(){
+    this.filterSelectedData = {
+      is_filter: true,
+      gender: '',
+      pincode: '',
+      city: '',
+      user_id: localStorage.userID
+    };
   }
 }
