@@ -187,7 +187,7 @@ export class ProfilePage {
     let checkProfile_assets = this.userImage.includes("assets");
     val.value.profile_pic = checkProfile_assets == true ? null : this.userImage;
     val.value.phone_no = Number(val.value.phone_no);
-    val.value.dob = moment(val.value.dob);
+    val.value.dob = moment(val.value.dob).format('LLL');
     if (val.value) {
       const uservalue = val.value;
       const userId = {
