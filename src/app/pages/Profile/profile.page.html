@@ -26,7 +26,7 @@
                         <ion-label position="floating" class="label-fontsize">Contact No.
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_no" disabled="true"></ion-input>
+                        <ion-input type="number" name="cno" formControlName="phone_no" disabled="true" placeholder="Enter Contact No here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -35,7 +35,7 @@
                         <ion-label position="floating" class="label-fontsize">First Name
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input name="first_name" formControlName="first_name"></ion-input>
+                        <ion-input name="first_name" formControlName="first_name" placeholder="Enter First Name here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.first_name.valid
                         &&(profileForm.controls.first_name.dirty
@@ -51,7 +51,7 @@
                         <ion-label position="floating" class="label-fontsize">Middle Name
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input name="middle_name" formControlName="middle_name"></ion-input>
+                        <ion-input name="middle_name" formControlName="middle_name" placeholder="Enter Middle Name here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.middle_name.valid
                         &&(profileForm.controls.middle_name.dirty
@@ -67,7 +67,7 @@
                         <ion-label position="floating" class="label-fontsize">Last Name
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input name="sur_name" formControlName="sur_name"></ion-input>
+                        <ion-input name="sur_name" formControlName="sur_name" placeholder="Enter Last Name here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.sur_name.valid
                         &&(profileForm.controls.sur_name.dirty
@@ -137,7 +137,7 @@
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Email</ion-label>
-                        <ion-input type="email" name="email" formControlName="email"></ion-input>
+                        <ion-input type="email" name="email" formControlName="email" placeholder="Enter Email here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -162,7 +162,7 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Home No.
                         </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_home"></ion-input>
+                        <ion-input type="number" name="cno" formControlName="phone_home" placeholder="Enter Home No here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -170,7 +170,7 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Office No.
                         </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_office"></ion-input>
+                        <ion-input type="number" name="cno" formControlName="phone_office" placeholder="Enter Office No here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -178,7 +178,7 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Other No.
                         </ion-label>
-                        <ion-input type="number" name="cno" formControlName="phone_other"></ion-input>
+                        <ion-input type="number" name="cno" formControlName="phone_other" placeholder="Enter Other No here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -186,7 +186,7 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Education
                         </ion-label>
-                        <ion-input type="text" name="email" formControlName="education"></ion-input>
+                        <ion-input type="text" name="email" formControlName="education" placeholder="Enter Education here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -194,7 +194,7 @@
                     <ion-item class="ion-no-padding">
                         <ion-label position="floating" class="label-fontsize">Occupation
                         </ion-label>
-                        <ion-input type="text" name="ocupation" formControlName="occupation"></ion-input>
+                        <ion-input type="text" name="ocupation" formControlName="occupation" placeholder="Enter Occupation here"></ion-input>
                     </ion-item>
                 </ion-col>
 
@@ -203,7 +203,7 @@
                         <ion-label position="floating" class="label-fontsize">Address
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="text" name="address" formControlName="address"></ion-input>
+                        <ion-input type="text" name="address" formControlName="address" placeholder="Enter Address here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.address.valid
                         &&(profileForm.controls.address.dirty
@@ -219,7 +219,7 @@
                         <ion-label position="floating" class="label-fontsize">City
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="text" name="city" formControlName="city"></ion-input>
+                        <ion-input type="text" name="city" formControlName="city" placeholder="Enter City here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.city.valid
                         &&(profileForm.controls.city.dirty
@@ -235,7 +235,7 @@
                         <ion-label position="floating" class="label-fontsize">State
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="text" name="state" formControlName="state"></ion-input>
+                        <ion-input type="text" name="state" formControlName="state" placeholder="Enter State here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.state.valid
                         &&(profileForm.controls.state.dirty
@@ -251,7 +251,7 @@
                         <ion-label position="floating" class="label-fontsize">Country
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="text" name="country" formControlName="country"></ion-input>
+                        <ion-input type="text" name="country" formControlName="country" placeholder="Enter Country here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.country.valid
                         &&(profileForm.controls.country.dirty
@@ -267,7 +267,7 @@
                         <ion-label position="floating" class="label-fontsize">PinCode
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input type="number" name="pin_code" formControlName="pin_code"></ion-input>
+                        <ion-input type="number" name="pin_code" formControlName="pin_code" placeholder="Enter PinCode here"></ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.pin_code.valid
                         &&(profileForm.controls.pin_code.dirty
