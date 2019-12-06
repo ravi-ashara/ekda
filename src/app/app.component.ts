@@ -75,14 +75,14 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.handleHardwareBackButton();
+      this.pushNotifications();
       if (localStorage.token != undefined) {
         this.navCtrl.navigateRoot(['/my-calendar']);
       } else {
         this.navCtrl.navigateRoot(['/login']);
       }
       this.bs.getUserData();
-      this.handleHardwareBackButton();
-      this.pushNotifications();
       this.setUserData();
     });
   }
@@ -105,7 +105,7 @@ export class AppComponent {
       } else if (this.router.url === '/login') {
         navigator['app'].exitApp();
       } else {
-        if(this.router.url === '/my-calendar'){
+        if (this.router.url === '/my-calendar') {
           this.alertModule.openConfirm('27 Ekda', 'Are you sure you want to exit ?', 'Exit', (res: any) => {
             if (res === "Success") {
               navigator['app'].exitApp();
@@ -158,13 +158,28 @@ export class AppComponent {
 
     pushObject.on('notification').subscribe((data: any) => {
       console.log('Received a notification ' + JSON.stringify(data));
-      var extraData = JSON.parse(JSON.stringify(data.additionalData));
-      if (data.additionalData.foreground) {
-        // if application open
-        console.log('in foreground');
-
-      } else {
-      }
+      this.zone.run(() => {
+        if (data.additionalData.foreground) { // if application open
+          if (this.alertModule.isconfirmBox === true) {
+            this.alertModule.confirmBox.dismiss();
+          }
+          this.alertModule.openConfirm(data.title, data.message, 'See', (res: any) => {
+            if (res === "Success") {
+              if (localStorage.token != undefined) {
+                this.navCtrl.navigateRoot(['/news-list']);
+              } else {
+                this.navCtrl.navigateRoot(['/login']);
+              }
+            }
+          });
+        } else {
+          if (localStorage.token != undefined) {
+            this.navCtrl.navigateRoot(['/news-list']);
+          } else {
+            this.navCtrl.navigateRoot(['/login']);
+          }
+        }
+      });
     });
 
 

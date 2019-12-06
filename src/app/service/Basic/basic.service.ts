@@ -10,7 +10,6 @@ import { AlertModule } from 'src/app/Module/alert/alert.module';
   providedIn: 'root'
 })
 export class BasicService {
-
   baseUrl: any = 'https://www.avronhospitals.com/ekda/api/';
   loadingElement: any;
   deviceToken: any = '';

@@ -7,10 +7,12 @@ import { AlertController, ToastController } from '@ionic/angular';
   imports: [CommonModule]
 })
 export class AlertModule {
+  isconfirmBox: boolean = false;
+  confirmBox: any;
   constructor(
     public alertController: AlertController,
     public toastController: ToastController
-  ) {}
+  ) { }
 
   /**
    *
@@ -23,7 +25,7 @@ export class AlertModule {
       header: val_header,
       message: val_message,
       buttons: [val_buttons],
-      mode:'ios'
+      mode: 'ios'
     });
     await alert.present();
   }
@@ -41,7 +43,8 @@ export class AlertModule {
     val_buttons: any,
     func_return: any
   ) {
-    const confirm = await this.alertController.create({
+    this.isconfirmBox = true;
+    this.confirmBox = await this.alertController.create({
       header: val_header,
       message: val_message,
       mode: 'ios',
@@ -51,17 +54,19 @@ export class AlertModule {
           role: 'cancel',
           handler: () => {
             func_return('Fail');
+            this.isconfirmBox = false;
           }
         },
         {
           text: val_buttons,
           handler: () => {
             func_return('Success');
+            this.isconfirmBox = false;
           }
         }
       ]
     });
-    await confirm.present();
+    await this.confirmBox.present();
   }
 
   /**
@@ -75,7 +80,7 @@ export class AlertModule {
       message: val_message,
       position: val_position,
       duration: val_duration,
-      mode:'ios'
+      mode: 'ios'
     });
     await toast.present();
   }
