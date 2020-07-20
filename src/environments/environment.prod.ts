@@ -7,5 +7,6 @@ export const environment = {
     // projectId: 'appointment-c91be',
     // storageBucket: 'appointment-c91be.appspot.com',
     // messagingSenderId: '931767616401'
-  }
+  },
+  notificationURL: "https://fcm.googleapis.com/fcm/send"
 };
