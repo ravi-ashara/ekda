@@ -17,6 +17,7 @@
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="28" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
@@ -123,4 +124,5 @@
         <variable name="FCM_VERSION" value="17.0.+" />
     </plugin>
     <engine name="ios" spec="5.1.0" />
+    <engine name="android" spec="^8.1.0" />
 </widget>
