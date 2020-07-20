@@ -54,11 +54,11 @@ export class ProfilePage {
       marital_status: ['', Validators.required],
       phone_home: ['', Validators.required],
       phone_office: ['', Validators.required],
-      phone_other: ['', Validators.required],
+      phone_other: ''
     });
     this.route.queryParams.subscribe(params => {
       if (params.cno) {
-        this.profileForm.patchValue(params.cno);
+        this.profileForm.controls.phone_no.setValue(params.cno);
       } else {
         this.storage.get('userData').then(data => {
           this.profileForm.patchValue(data);
@@ -149,6 +149,9 @@ export class ProfilePage {
     }
   }
 
+  errorImage(val: any) {
+    return val.target.src = "assets/img/user.png";
+  }
   // cropImage(val: any) {
 
   //   this.crop
