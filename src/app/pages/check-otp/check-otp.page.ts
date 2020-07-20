@@ -56,9 +56,9 @@ export class CheckOtpPage {
             self.bs.DismissLoader();
             if (receivedData.status) {
               localStorage.token = receivedData.data.access_token;
-              this.bs.userId = receivedData.data.user_id;
+              self.bs.userId = receivedData.data.user_id;
               self.bs.setUserData(receivedData.data);
-              this.event.publish('setUserData');
+              self.event.publish('setUserData');
               if (self.userExist == true) {
                 if (receivedData.data.first_name === null && receivedData.data.sur_name === null) {
                   self.navCtrl.navigateRoot(['/profile']);
