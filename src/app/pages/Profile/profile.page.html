@@ -68,17 +68,17 @@
 
                 <ion-col size="12">
                     <ion-item class="ion-no-padding">
-                        <ion-label position="floating" class="label-fontsize">Last Name
+                        <ion-label position="floating" class="label-fontsize">Sur Name
                             <ion-text color="danger"> * </ion-text>
                         </ion-label>
-                        <ion-input name="sur_name" formControlName="sur_name" placeholder="Enter Last Name here">
+                        <ion-input name="sur_name" formControlName="sur_name" placeholder="Enter Sur Name here">
                         </ion-input>
                     </ion-item>
                     <div class="ion-margin-top ion-margin-left" *ngIf="!profileForm.controls.sur_name.valid
                         &&(profileForm.controls.sur_name.dirty
                         ||profileForm.controls.sur_name.touched)">
                         <div *ngIf="profileForm.controls['sur_name'].errors['required']">
-                            <ion-text color="danger">Last Name is required.</ion-text>
+                            <ion-text color="danger">Sur Name is required.</ion-text>
                         </div>
                     </div>
                 </ion-col>
